@@ -4,7 +4,7 @@ from archiver import Archiver
 
 
 def print_header():
-    print('Media archiver version 1.0')
+    print('Media archiver version 1.1')
     print('Copyright Alex Sartori')
     print('')
 
@@ -63,8 +63,9 @@ if __name__ == '__main__':
 
     if len(args) == 0:
         print_error('no target folder specified')
-    archiver.target_folder = args[0]
-    if len(args) > 1:
-        print_error('too many arguments, ignoring: ' + ' '.join(args[1:]))
+    elif len(args) == 1:
+        archiver.target_folder = args[0]
+    else:
+        archiver.target_folder = ' '.join(args)
 
     archiver.start()
